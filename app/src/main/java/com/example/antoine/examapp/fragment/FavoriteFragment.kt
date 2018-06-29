@@ -15,12 +15,12 @@ import com.example.antoine.examapp.db.Questions
 class FavoriteFragment : Fragment() {
     private var favList: ArrayList<Questions> = ArrayList()
     private lateinit var db: AppDataBase
-    private var favAdapter: FavAdapter = FavAdapter(favList, context!!)
+    private lateinit var favAdapter: FavAdapter
     private lateinit var rootView : View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_questions, container, false)
-
+        favAdapter = FavAdapter(ArrayList(), context!!)
         db = AppDataBase.getDataBase(context)
         favList = ArrayList(db.favDao().questions)
 
